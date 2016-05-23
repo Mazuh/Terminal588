@@ -1,19 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="io.github.mazuh.terminal588.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+        android:background="#000"
+        android:padding="16dp"
+        android:text="Neste momento"
+        android:textColor="#fff"
+        android:textSize="30dp" />
+
+    <!-- DIRETO ////////////////////////////////////////////// -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:drawableLeft="@drawable/ic_directions_bus_black_24dp"
+            android:text="DIRETO"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <!-- próximo -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2c3e50"
+            android:drawableLeft="@drawable/ic_keyboard_arrow_down_black_24dp"
+            android:drawableTint="#fff"
+            android:padding="5dp"
+            android:text="Próximo"
+            android:textColor="#fff"
+            android:textSize="23dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#bdc3c7"
+            android:orientation="vertical">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="2dp"
+                    android:text="00:00"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="40dp"
+                    android:text="Guanabara"
+                    android:textSize="25dp" />
+
+            </TableRow>
+        </LinearLayout>
+
+        <!-- anterior -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#95a5a6"
+            android:drawableLeft="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:drawableTint="#fff"
+            android:padding="5dp"
+            android:text="Anterior"
+            android:textColor="#fff"
+            android:textSize="23dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#bdc3c7"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="2dp"
+                    android:text="00:00"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="40dp"
+                    android:text="Guanabara"
+                    android:textSize="25dp" />
+
+            </TableRow>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- INVERSO ////////////////////////////////////////////// -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:drawableLeft="@drawable/ic_directions_bus_black_24dp"
+            android:text="INVERSO"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <!-- próximo -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2c3e50"
+            android:drawableLeft="@drawable/ic_keyboard_arrow_down_black_24dp"
+            android:drawableTint="#fff"
+            android:padding="5dp"
+            android:text="Próximo"
+            android:textColor="#fff"
+            android:textSize="23dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#bdc3c7"
+            android:orientation="vertical">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="2dp"
+                    android:text="00:00"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="40dp"
+                    android:text="Guanabara"
+                    android:textSize="25dp" />
+
+            </TableRow>
+        </LinearLayout>
+
+        <!-- anterior -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#95a5a6"
+            android:drawableLeft="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:drawableTint="#fff"
+            android:padding="5dp"
+            android:text="Anterior"
+            android:textColor="#fff"
+            android:textSize="23dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#bdc3c7"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="2dp"
+                    android:text="00:00"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="40dp"
+                    android:text="Guanabara"
+                    android:textSize="25dp" />
+
+            </TableRow>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
