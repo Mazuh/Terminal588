@@ -8,14 +8,22 @@ import java.util.TimeZone;
  */
 public class Onibus {
 
+    /* Dados do veículo */
     private Calendar horario;
     private String empresa;
 
+    /* Nomes das empresas de ônibus */
+    public static final String GUANABARA = "Guanabara";
+    public static final String STMARIA   = "Santa Maria";
+    public static final String REUNIDAS  = "Reunidas";
+    public static final String CONCEICAO = "Conceição";
+    public static final String VIASUL    = "Via Sul";
+    public static final String CIDNATAL  = "Cidade Natal";
 
     /**
      * Construtor.
      *
-     * @param empresa o nome da empresa que partirá em tal horário
+     * @param empresa o nome da empresa a qual o ônibus deste horário partirá (usar as constantes!)
      * @param horario hora em que o busão parte no formato "hh:mm"
      */
     public Onibus(String empresa, String horario) {

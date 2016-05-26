@@ -9,7 +9,19 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
+    /* ATRIBUTOS */
+
+    // Armazena os ônibus de cada sentido do Circular
+    private ArrayList<Onibus> diretos;
+    private ArrayList<Onibus> inversos;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,5 +60,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+
+
+    public boolean carregarHorarios () {
+
     }
 }
