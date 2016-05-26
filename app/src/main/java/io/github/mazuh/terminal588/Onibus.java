@@ -1,39 +1,47 @@
 package io.github.mazuh.terminal588;
 
-import java.sql.Time;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * @author mazuh
  */
 public class Onibus {
 
-    private Time horario;
+    private Calendar horario;
     private String empresa;
 
 
     /**
      * Construtor.
      *
-     * @param horario um objeto configurado com "hh:mm:00" da hora em que o busão parte,
-     *                por exemplo horario = new Time(Time.valueOf("12:45:00")
-     * @param empresa o nome da empresa que partirá em tal horário.
+     * @param empresa o nome da empresa que partirá em tal horário
+     * @param horario hora em que o busão parte no formato "hh:mm"
      */
-    public Onibus(Time horario, String empresa) {
-        this.horario = horario;
+    public Onibus(String empresa, String horario) {
         this.empresa = empresa;
+
+        String[] dadosHorario = horario.split(":");
+        this.horario = getCalendar(
+                Integer.valueOf(dadosHorario[0]),
+                Integer.valueOf(dadosHorario[1])
+        );
+
     }
 
 
     /**
-     * Construtor.
+     * Produz string que representa verbalmente o objeto.
      *
      * @return representação do ônibus no formato "hh:mm - empresa"
      */
     @Override
     public String toString() {
-        return this.horario.toString().substring(0, 5) + " - " + this.empresa;
+        return this.horario.get(Calendar.HOUR_OF_DAY)
+                + ":"
+                + this.horario.get(Calendar.MINUTE)
+                + " - "
+                + this.empresa;
     }
 
 
@@ -41,51 +49,69 @@ public class Onibus {
      * Calcula quantos minutos faltam pra o ônibus partir.
      *
      * @return inteiro de minutos até o horário deste ônibus partir;
-     *         -1 caso já tenha passado.
+     * ou um valor negativo caso já tenha passado;
+     * ou 0 se o ônibus deve passar no minuto atual minuto
      */
     public int minutosParaPartir() {
-        // configura Calendar tempo
-        Calendar tempo = Calendar.getInstance();
-        tempo.set(Calendar.MINUTE, 0);
-        tempo.set(Calendar.MILLISECOND, 0);
-
-        // gera ms de agora
-        long agoraMs = tempo.getTimeInMillis();
-
-        // configura tempo para partida e gera ms
-        String[] partida = this.horario.toString().split(":");
-        tempo.set(Calendar.HOUR_OF_DAY, Integer.valueOf(partida[0]));
-        tempo.set(Calendar.MINUTE, Integer.valueOf(partida[1]));
-        long partidaMs = tempo.getTimeInMillis();
-
-        // calcula ms diferença e configura seu tempo
-        long diferencaMs = partidaMs - agoraMs;
-        if (diferencaMs < 0) return -1; // !
-        tempo.setTimeInMillis(diferencaMs);
-
-        // converte horas em ms antes de retornar
-        return (tempo.get(Calendar.HOUR_OF_DAY) * 60) + tempo.get(Calendar.MINUTE);
+        long diferencaMs = this.horario.compareTo(getCalendar());
+        return ((int) (diferencaMs * 1000 * 60));
     }
 
 
     /**
-     * Saber se a previsão está disponível para hoje (exemplo: indisponível em fim de semana).
-     * TODO: verificar feriados ou alguma outra anormalidade?
+     * Verificar se o ônibus já passou.
      *
-     * @return false caso hoje seja fim de semana
+     * @return true se o ônibus já passou hoje
      */
-    public boolean hojeTemPrevisao(){
-        // TODO
-        return true;
+    public boolean jaPassou() {
+        return this.horario.after(getCalendar());
     }
 
 
 
-    /*
-    * GETTERS PADRÃO
-    */
 
-    public Time getHorario() {
+
+    /* PRIVATES */
+
+    /**
+     * Gera uma instância da classe Calendar com horário customizável para ser usada no sistema.
+     *
+     * @param  hora   hora no intervalo [0,24[
+     * @param  minuto minuto no intervalo [0,60[
+     *
+     * @return objeto Calendar com timezone Brazil/East, s e ms em 0, e com hora e minuto
+     * de acordo com os parâmetros
+     */
+    private Calendar getCalendar(int hora, int minuto) {
+        Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Brazil/East"));
+        c.set(Calendar.HOUR_OF_DAY, Integer.valueOf(hora));
+        c.set(Calendar.MINUTE, Integer.valueOf(minuto));
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        return c;
+    }
+
+
+    /**
+     * Gera uma instância da classe Calendar com horário atual para ser usada no sistema.
+     *
+     * @return objeto Calendar com timezone Brazil/East, s e ms em 0, e com hora e minuto
+     * de acordo com o tempo atual.
+     */
+    private Calendar getCalendar() {
+        Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Brazil/East"));
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        return c;
+    }
+
+
+
+
+
+    /* ACESSOS PADRÃO */
+
+    public Calendar getHorario() {
         return horario;
     }
 
