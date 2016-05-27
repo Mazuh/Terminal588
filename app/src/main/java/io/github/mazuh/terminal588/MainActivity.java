@@ -1,25 +1,43 @@
 package io.github.mazuh.terminal588;
 
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+/**
+ * @author mazuh
+ */
 public class MainActivity extends AppCompatActivity {
 
-    /* ATRIBUTOS */
+    /* MAPEAMENTO DO LAYOUT */
 
-    // Armazena os ônibus de cada sentido do Circular
-    private ArrayList<Onibus> diretos;
-    private ArrayList<Onibus> inversos;
-
-
+    // accordion: elementos
+    private TextView accordionBtnDiretoProximo;
+    private TextView accordionBtnDiretoAnterior;
+    private TextView accordionBtnInversoProximo;
+    private TextView accordionBtnInversoAnterior;
+    private LinearLayout accordionContainerDiretoProximo;
+    private LinearLayout accordionContainerDiretoAnterior;
+    private LinearLayout accordionContainerInversoProximo;
+    private LinearLayout accordionContainerInversoAnterior;
+    // accordions: atributos
+    private static final int VISIBILITY_ON  = View.VISIBLE;
+    private static final int VISIBILITY_OFF = View.GONE;
+    private static Drawable ICON_ON, ICON_OFF; // initAccordion()
+    private static Drawable BACKGROUND_ON, BACKGROUND_OFF; // initAccordion()
 
 
 
@@ -38,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        init();
     }
 
     @Override
@@ -62,12 +82,115 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void init(){
+        //Log.d("MAZUH", "4");
+        initAccordion();
+    }
+
+    private void initAccordion(){
+        accordionBtnDiretoProximo   = (TextView) findViewById(R.id.accordion_btn_direto_proximo);
+        accordionBtnDiretoAnterior  = (TextView) findViewById(R.id.accordion_btn_direto_anterior);
+        accordionBtnInversoProximo  = (TextView) findViewById(R.id.accordion_btn_inverso_proximo);
+        accordionBtnInversoAnterior = (TextView) findViewById(R.id.accordion_btn_inverso_anterior);
+
+        accordionContainerDiretoProximo   = (LinearLayout) findViewById(R.id.accordion_container_direto_proximo);
+        accordionContainerDiretoAnterior  = (LinearLayout) findViewById(R.id.accordion_container_direto_anterior);
+        accordionContainerInversoProximo  = (LinearLayout) findViewById(R.id.accordion_container_inverso_proximo);
+        accordionContainerInversoAnterior = (LinearLayout) findViewById(R.id.accordion_container_inverso_anterior);
+
+        BACKGROUND_ON  = accordionBtnDiretoProximo.getBackground();
+        BACKGROUND_OFF = accordionBtnDiretoAnterior.getBackground();
+        ICON_ON        = accordionBtnDiretoProximo.getCompoundDrawables()[0];
+        ICON_OFF       = accordionBtnDiretoAnterior.getCompoundDrawables()[0];
+
+        /*if (Build.VERSION.SDK_INT > 21) {
+            ICON_ON = getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black_24dp, getTheme());
+            ICON_OFF = getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black_24dp, getTheme());
+        } else{
+            // getDrawable(int) decrecated da api lv 22 em diante
+            ICON_ON = getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black_24dp);
+            ICON_OFF = getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black_24dp);
+        }*/
+
+        accordionBtnDiretoProximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                accordionDiretoProximo(true);
+                accordionDiretoAnterior(false);
+            }
+        });
+
+        accordionBtnDiretoAnterior.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                accordionDiretoProximo(false);
+                accordionDiretoAnterior(true);
+            }
+        });
+
+        accordionBtnInversoProximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                accordionInversoProximo(true);
+                accordionInversoAnterior(false);
+            }
+        });
+
+        accordionBtnInversoAnterior.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                accordionInversoProximo(false);
+                accordionInversoAnterior(true);
+            }
+        });
+    }
 
 
+    private void accordionDiretoProximo(boolean ativar){
+        if(ativar){
+            accordionContainerDiretoProximo.setVisibility(VISIBILITY_ON);
+            accordionBtnDiretoProximo.setBackground(BACKGROUND_ON);
+            accordionBtnDiretoProximo.setCompoundDrawables(ICON_ON, null, null, null);
+        } else{
+            accordionContainerDiretoProximo.setVisibility(VISIBILITY_OFF);
+            accordionBtnDiretoProximo.setBackground(BACKGROUND_OFF);
+            accordionBtnDiretoProximo.setCompoundDrawables(ICON_OFF, null, null, null);
+        }
+    }
 
+    private void accordionDiretoAnterior(boolean ativar){
+        if(ativar){
+            accordionContainerDiretoAnterior.setVisibility(VISIBILITY_ON);
+            accordionBtnDiretoAnterior.setBackground(BACKGROUND_ON);
+            accordionBtnDiretoAnterior.setCompoundDrawables(ICON_ON, null, null, null);
+        } else{
+            accordionContainerDiretoAnterior.setVisibility(VISIBILITY_OFF);
+            accordionBtnDiretoAnterior.setBackground(BACKGROUND_OFF);
+            accordionBtnDiretoAnterior.setCompoundDrawables(ICON_OFF, null, null, null);
+        }
+    }
 
+    private void accordionInversoProximo(boolean ativar){
+        if(ativar){
+            accordionContainerInversoProximo.setVisibility(VISIBILITY_ON);
+            accordionBtnInversoProximo.setBackground(BACKGROUND_ON);
+            accordionBtnInversoProximo.setCompoundDrawables(ICON_ON, null, null, null);
+        } else{
+            accordionContainerInversoProximo.setVisibility(VISIBILITY_OFF);
+            accordionBtnInversoProximo.setBackground(BACKGROUND_OFF);
+            accordionBtnInversoProximo.setCompoundDrawables(ICON_OFF, null, null, null);
+        }
+    }
 
-    public boolean carregarHorarios () {
-
+    private void accordionInversoAnterior(boolean ativar){
+        if(ativar){
+            accordionContainerInversoAnterior.setVisibility(VISIBILITY_ON);
+            accordionBtnInversoAnterior.setBackground(BACKGROUND_ON);
+            accordionBtnInversoAnterior.setCompoundDrawables(ICON_ON, null, null, null);
+        } else{
+            accordionContainerInversoAnterior.setVisibility(VISIBILITY_OFF);
+            accordionBtnInversoAnterior.setBackground(BACKGROUND_OFF);
+            accordionBtnInversoAnterior.setCompoundDrawables(ICON_OFF, null, null, null);
+        }
     }
 }

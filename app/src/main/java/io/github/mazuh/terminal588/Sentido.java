@@ -3,7 +3,7 @@ package io.github.mazuh.terminal588;
 import java.util.ArrayList;
 
 /**
- * Created by mazuh
+ * @author mazuh
  */
 public class Sentido {
 

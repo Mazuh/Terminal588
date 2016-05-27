@@ -49,6 +49,7 @@
 
                 <!-- próximo -->
                 <TextView
+                    android:id="@+id/accordion_btn_direto_proximo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#2c3e50"
@@ -60,6 +61,7 @@
                     android:textSize="23dp" />
 
                 <LinearLayout
+                    android:id="@+id/accordion_container_direto_proximo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#bdc3c7"
@@ -95,6 +97,7 @@
                 <!-- anterior -->
 
                 <TextView
+                    android:id="@+id/accordion_btn_direto_anterior"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#95a5a6"
@@ -106,6 +109,7 @@
                     android:textSize="23dp" />
 
                 <LinearLayout
+                    android:id="@+id/accordion_container_direto_anterior"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#bdc3c7"
@@ -162,6 +166,7 @@
 
                 <!-- próximo -->
                 <TextView
+                    android:id="@+id/accordion_btn_inverso_proximo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#2c3e50"
@@ -173,6 +178,7 @@
                     android:textSize="23dp" />
 
                 <LinearLayout
+                    android:id="@+id/accordion_container_inverso_proximo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#bdc3c7"
@@ -208,6 +214,7 @@
                 <!-- anterior -->
 
                 <TextView
+                    android:id="@+id/accordion_btn_inverso_anterior"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#95a5a6"
@@ -219,6 +226,7 @@
                     android:textSize="23dp" />
 
                 <LinearLayout
+                    android:id="@+id/accordion_container_inverso_anterior"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#bdc3c7"
@@ -254,9 +262,7 @@
 
             </LinearLayout>
 
-
         </LinearLayout>
     </ScrollView>
-
 
 </LinearLayout>
