@@ -1,7 +1,6 @@
 package io.github.mazuh.terminal588;
 
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +19,9 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
+    /* ATRIBUTOS DA ACTIVITY */
+    private Sentido direto, inverso;
+
     /* MAPEAMENTO DO LAYOUT */
 
     // accordion: elementos
@@ -37,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
     private static Drawable ICON_ON, ICON_OFF; // initAccordion()
     private static Drawable BACKGROUND_ON, BACKGROUND_OFF; // initAccordion()
 
+    // textview de horários
+    private TextView tvDiretoProximoHorario;
+    private TextView tvDiretoProximoEmpresa;
+    private TextView tvDiretoAnteriorHorario;
+    private TextView tvDiretoAnteriorEmpresa;
+    private TextView tvInversoProximoHorario;
+    private TextView tvInversoProximoEmpresa;
+    private TextView tvInversoAnteriorHorario;
+    private TextView tvInversoAnteriorEmpresa;
 
 
     @Override
@@ -81,13 +92,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        //Log.d("MAZUH", "4");
+        Log.d("MAZUH", "1");
 
         initAccordion();
+        initTextHorarios();
 
-        Sentido direto = new Sentido(Sentido.DIRETO);
-        //Sentido inverso = new Sentido(Sentido.INVERSO);
+        direto = new Sentido(Sentido.DIRETO);
+        atualizarDireto();
 
+        //inverso = new Sentido(Sentido.INVERSO);
+
+    }
+
+    private void initTextHorarios(){
+        tvDiretoProximoHorario   = (TextView) findViewById(R.id.direto_proximo_horario);
+        tvDiretoProximoEmpresa   = (TextView) findViewById(R.id.direto_proximo_empresa);
+        tvDiretoAnteriorHorario  = (TextView) findViewById(R.id.direto_anterior_horario);
+        tvDiretoAnteriorEmpresa  = (TextView) findViewById(R.id.direto_anterior_empresa);
+        /*tvInversoProximoHorario  = (TextView) findViewById(R.id.direto_proximo_horario);
+        tvInversoProximoEmpresa  = (TextView) findViewById(R.id.direto_proximo_horario);
+        tvInversoAnteriorHorario = (TextView) findViewById(R.id.direto_proximo_horario);
+        tvInversoAnteriorEmpresa = (TextView) findViewById(R.id.direto_proximo_horario);*/
+    }
+
+    private void atualizarDireto(){
+        Onibus[] onibus = direto.findOnibusAnteriorEProximo();
+        Onibus anterior = onibus[0];
+        Onibus proximo  = onibus[1];
+
+        if (anterior != null) {
+            tvDiretoAnteriorHorario.setText(anterior.getHorarioStr());
+            tvDiretoAnteriorEmpresa.setText(anterior.getEmpresa());
+        }
+        if (proximo != null) {
+            tvDiretoProximoHorario.setText(proximo.getHorarioStr());
+            tvDiretoProximoEmpresa.setText(proximo.getEmpresa());
+        }
     }
 
     private void initAccordion(){

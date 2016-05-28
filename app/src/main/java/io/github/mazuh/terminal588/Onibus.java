@@ -1,5 +1,7 @@
 package io.github.mazuh.terminal588;
 
+import android.util.Log;
+
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -69,10 +71,10 @@ public class Onibus {
     /**
      * Verifica se o ônibus já partiu do terminal hoje.
      *
-     * @return true se o horário do ônibus estiver após o horário atual
+     * @return true se o horário atual estiver depois do deste.Onibus
      */
     public boolean jaPartiu() {
-        return this.horario.after(getCalendar());
+        return getCalendar().after(this.horario);
     }
 
     /**
@@ -131,11 +133,17 @@ public class Onibus {
     /* ACESSOS PADRÃO */
 
     public Calendar getHorario() {
-        return horario;
+        return this.horario;
+    }
+
+    public String getHorarioStr(){
+        return String.valueOf(this.horario.get(Calendar.HOUR_OF_DAY))
+                + ":"
+                + String.valueOf(this.horario.get(Calendar.MINUTE));
     }
 
     public String getEmpresa() {
-        return empresa;
+        return this.empresa;
     }
 
 }

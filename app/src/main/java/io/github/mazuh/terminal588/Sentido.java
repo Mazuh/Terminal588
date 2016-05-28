@@ -1,5 +1,7 @@
 package io.github.mazuh.terminal588;
 
+import android.util.Log;
+
 /**
  * @author mazuh
  */
@@ -27,18 +29,26 @@ public class Sentido {
 
 
     /**
-     * Encontra a instância do próximo ônibus a partir
+     * Encontra as instâncias do próximo e do mais recente ônibus a partirem
      *
-     * @return objeto Onibus que parte agora ou o mais próximo a passar.
+     * @return array de instâncias de Ônibus, cujas posições:
+     *         0 = último que já partiu (null se nenhum partiu ainda),
+     *         1 = próximo a partir (null se não houver um próximo nesta data)
      **/
-    public Onibus proximoOnibus(){
-        Onibus ultimoOnibus = new Onibus("NULL", "23:59");
+    public Onibus[] findOnibusAnteriorEProximo(){
+        Onibus proximo  = null;
+        Onibus anterior = null;
 
         for (Onibus onibus : this.onibusQuePartem) {
-            // TODO
+            if (!onibus.jaPartiu()){
+                proximo = onibus;
+                break;
+            } else{
+                anterior = onibus;
+            }
         }
 
-        return ultimoOnibus;
+        return new Onibus[] {anterior, proximo};
     }
 
 
@@ -170,6 +180,7 @@ public class Sentido {
 
             case Sentido.INVERSO:
                 onibus = new Onibus[]{
+                        // TODO: manualmente ordenar crescentemente por parâmetro de horário
                         // # 3
                         new Onibus(Onibus.GUANABARA, "06:20"),
                         new Onibus(Onibus.GUANABARA, "06:55"),
