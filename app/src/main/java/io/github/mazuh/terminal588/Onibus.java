@@ -126,6 +126,19 @@ public class Onibus {
         return c;
     }
 
+    /**
+     * Getter de horário no formato string "hh:mm"
+     *
+     * @return string do horário em formato "hh:mm"
+     */
+    public String getHorarioStr(){
+        int hora = this.horario.get(Calendar.HOUR_OF_DAY);
+        int minuto = this.horario.get(Calendar.MINUTE);
+
+        return ((hora < 10 ? "0" : "") + String.valueOf(hora))
+                + ":"
+                + ((minuto < 10 ? "0" : "") + String.valueOf(minuto));
+    }
 
 
 
@@ -134,12 +147,6 @@ public class Onibus {
 
     public Calendar getHorario() {
         return this.horario;
-    }
-
-    public String getHorarioStr(){
-        return String.valueOf(this.horario.get(Calendar.HOUR_OF_DAY))
-                + ":"
-                + String.valueOf(this.horario.get(Calendar.MINUTE));
     }
 
     public String getEmpresa() {

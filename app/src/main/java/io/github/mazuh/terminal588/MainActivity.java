@@ -91,8 +91,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Reúne as funções extras que devem ser executadas on create.
+     */
     private void init(){
-        Log.d("MAZUH", "1");
+        Log.d("MAZUH", "2");
 
         initAccordion();
         initTextHorarios();
@@ -104,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Mapeia e configura objetos do layout relacionados às previsões dos sentidos
+     */
     private void initTextHorarios(){
         tvDiretoProximoHorario   = (TextView) findViewById(R.id.direto_proximo_horario);
         tvDiretoProximoEmpresa   = (TextView) findViewById(R.id.direto_proximo_empresa);
@@ -115,6 +121,9 @@ public class MainActivity extends AppCompatActivity {
         tvInversoAnteriorEmpresa = (TextView) findViewById(R.id.direto_proximo_horario);*/
     }
 
+    /**
+     * Atualiza os textos do sentido direto com novas previsões
+     */
     private void atualizarDireto(){
         Onibus[] onibus = direto.findOnibusAnteriorEProximo();
         Onibus anterior = onibus[0];
@@ -130,6 +139,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Mapeia e configura objetos do layout relacionados ao accordion
+     */
     private void initAccordion(){
         accordionBtnDiretoProximo   = (TextView) findViewById(R.id.accordion_btn_direto_proximo);
         accordionBtnDiretoAnterior  = (TextView) findViewById(R.id.accordion_btn_direto_anterior);
@@ -188,7 +200,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Alterna estado da aba accordion: próximo ônibus do sentido direto
+     */
     private void accordionDiretoProximo(boolean ativar){
         if(ativar){
             accordionContainerDiretoProximo.setVisibility(VISIBILITY_ON);
@@ -201,6 +215,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Alterna estado da aba accordion: ônibus anterior do sentido direto
+     */
     private void accordionDiretoAnterior(boolean ativar){
         if(ativar){
             accordionContainerDiretoAnterior.setVisibility(VISIBILITY_ON);
@@ -213,6 +230,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Alterna estado da aba accordion: próximo ônibus do sentido inverso
+     */
     private void accordionInversoProximo(boolean ativar){
         if(ativar){
             accordionContainerInversoProximo.setVisibility(VISIBILITY_ON);
@@ -225,6 +245,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Alterna estado da aba accordion: ônibus anterior do sentido inverso
+     */
     private void accordionInversoAnterior(boolean ativar){
         if(ativar){
             accordionContainerInversoAnterior.setVisibility(VISIBILITY_ON);
