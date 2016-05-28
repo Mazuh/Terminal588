@@ -95,13 +95,13 @@ public class MainActivity extends AppCompatActivity {
      * Reúne as funções extras que devem ser executadas on create.
      */
     private void init(){
-        Log.d("MAZUH", "2");
+        Log.d("MAZUH", "0");
 
         initAccordion();
         initTextHorarios();
 
         direto = new Sentido(Sentido.DIRETO);
-        atualizarDireto();
+        atualizarDireto(); // TODO atualização de X em X segundos
 
         //inverso = new Sentido(Sentido.INVERSO);
 
@@ -129,14 +129,27 @@ public class MainActivity extends AppCompatActivity {
         Onibus anterior = onibus[0];
         Onibus proximo  = onibus[1];
 
-        if (anterior != null) {
-            tvDiretoAnteriorHorario.setText(anterior.getHorarioStr());
-            tvDiretoAnteriorEmpresa.setText(anterior.getEmpresa());
-        }
-        if (proximo != null) {
-            tvDiretoProximoHorario.setText(proximo.getHorarioStr());
-            tvDiretoProximoEmpresa.setText(proximo.getEmpresa());
-        }
+        tvDiretoAnteriorHorario.setText(anterior == null ? "Ops..." : anterior.getHorarioStr());
+        tvDiretoAnteriorEmpresa.setText(anterior == null ? "Nenhum partiu hoje." : anterior.getEmpresa());
+
+        tvDiretoProximoHorario.setText(proximo == null ? "Esconde o celular" : proximo.getHorarioStr());
+        tvDiretoProximoEmpresa.setText(proximo == null ? "e estica as pernas." : proximo.getEmpresa());
+    }
+
+
+    /**
+     * Atualiza os textos do sentido inverso com novas previsões
+     */
+    private void atualizarInverso(){
+        Onibus[] onibus = inverso.findOnibusAnteriorEProximo();
+        Onibus anterior = onibus[0];
+        Onibus proximo  = onibus[1];
+
+        tvDiretoAnteriorHorario.setText(anterior == null ? "Ish..." : anterior.getHorarioStr());
+        tvDiretoAnteriorEmpresa.setText(anterior == null ? "Nenhum até agora." : anterior.getEmpresa());
+
+        tvDiretoProximoHorario.setText(proximo == null ? "Caramba..." : proximo.getHorarioStr());
+        tvDiretoProximoEmpresa.setText(proximo == null ? "O último já partiu!" : proximo.getEmpresa());
     }
 
     /**
@@ -200,8 +213,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     /**
-     * Alterna estado da aba accordion: próximo ônibus do sentido direto
+     * Alterna estado da aba accordion: próximo ônibus do sentido
+     *
+     * @param ativar true se o estado deve ser para visível, ligado etc
      */
     private void accordionDiretoProximo(boolean ativar){
         if(ativar){
@@ -217,6 +233,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Alterna estado da aba accordion: ônibus anterior do sentido direto
+     *
+     * @param ativar true se o estado deve ser para visível, ligado etc
      */
     private void accordionDiretoAnterior(boolean ativar){
         if(ativar){
@@ -232,6 +250,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Alterna estado da aba accordion: próximo ônibus do sentido inverso
+     *
+     * @param ativar true se o estado deve ser para visível, ligado etc
      */
     private void accordionInversoProximo(boolean ativar){
         if(ativar){
@@ -247,6 +267,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Alterna estado da aba accordion: ônibus anterior do sentido inverso
+     *
+     * @param ativar true se o estado deve ser para visível, ligado etc
      */
     private void accordionInversoAnterior(boolean ativar){
         if(ativar){
@@ -259,4 +281,5 @@ public class MainActivity extends AppCompatActivity {
             accordionBtnInversoAnterior.setCompoundDrawables(ICON_OFF, null, null, null);
         }
     }
+
 }
