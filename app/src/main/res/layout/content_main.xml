@@ -75,6 +75,7 @@
                         android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/direto_proximo_horario"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="40dp"
@@ -84,6 +85,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/direto_proximo_empresa"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="2dp"
@@ -124,6 +126,7 @@
                         android:paddingTop="10dp">
 
                         <TextView
+                            android:id="@+id/direto_anterior_horario"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="40dp"
@@ -133,6 +136,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/direto_anterior_empresa"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="2dp"

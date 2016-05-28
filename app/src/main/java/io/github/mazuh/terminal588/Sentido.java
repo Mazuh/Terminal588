@@ -1,7 +1,5 @@
 package io.github.mazuh.terminal588;
 
-import java.util.ArrayList;
-
 /**
  * @author mazuh
  */
@@ -9,9 +7,9 @@ public class Sentido {
 
     /* Dados do veículos deste sentido */
     private short cod;
-    private Onibus[] onibus;
+    private Onibus[] onibusQuePartem;
 
-    /* Identificação dos sentidos e seus horários*/
+    /* Identificação dos sentidos e seus horários */
     public static final short DIRETO  = 1;
     public static final short INVERSO = 2;
 
@@ -19,39 +17,38 @@ public class Sentido {
     /**
      * Construtor.
      *
-     * @param cod a identificação do sentido (usar as constantes!)
+     * @param sentido a identificação do sentido (usar as constantes!)
      */
-    public Sentido(short cod) {
-        this.cod = cod;
+    public Sentido(short sentido) {
+        this.cod = sentido;
 
-        onibus = getOnibus(); // init
+        this.onibusQuePartem = getOnibusQuePartem(); // init
     }
 
 
     /**
-     * Preenche as arraylist de horários dos Circular.
+     * Encontra a instância do próximo ônibus a partir
      *
-     * @return false caso alguma exception seja lançada.
+     * @return objeto Onibus que parte agora ou o mais próximo a passar.
      **/
-    private ArrayList carregarOsOnibus(){
-        try{
-            ArrayList<Onibus> onibus = new ArrayList<>();
+    public Onibus proximoOnibus(){
+        Onibus ultimoOnibus = new Onibus("NULL", "23:59");
 
-            //onibus.add(new Onibus(Onibus.GUANABARA, ":"));
-
-            return onibus;
-        }catch (Exception e){
-            return null;
+        for (Onibus onibus : this.onibusQuePartem) {
+            // TODO
         }
+
+        return ultimoOnibus;
     }
 
 
     /**
-     * Gera vetor de ônibus deste sentido.
+     * Deve ser chamado no Construtor!!! Constrói vetor de ônibus deste sentido.
      *
-     * @return um vetor Onibus[] correspondente a this.sentido
+     * @return um vetor com os objetos de Onibus que partem neste sentido; vetor vazio caso o
+     *         construtor de Sentido tenha sido inicializado com parâmetro errado.
      **/
-    private Onibus[] getOnibus(){
+    private Onibus[] getOnibusQuePartem(){
         Onibus[] onibus = new Onibus[]{};
 
         switch (this.cod){
@@ -232,7 +229,7 @@ public class Sentido {
 
     /* ACESSOS PADRÃO */
 
-    public short getCod() {
+    public short get() {
         return cod;
     }
 }

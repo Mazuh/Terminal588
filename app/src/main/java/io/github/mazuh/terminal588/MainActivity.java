@@ -14,8 +14,6 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * @author mazuh
@@ -84,7 +82,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
         //Log.d("MAZUH", "4");
+
         initAccordion();
+
+        Sentido direto = new Sentido(Sentido.DIRETO);
+        //Sentido inverso = new Sentido(Sentido.INVERSO);
+
     }
 
     private void initAccordion(){

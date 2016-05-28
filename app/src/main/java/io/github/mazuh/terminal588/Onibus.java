@@ -67,12 +67,23 @@ public class Onibus {
 
 
     /**
-     * Verificar se o ônibus já passou.
+     * Verifica se o ônibus já partiu do terminal hoje.
      *
-     * @return true se o ônibus já passou hoje
+     * @return true se o horário do ônibus estiver após o horário atual
      */
-    public boolean jaPassou() {
+    public boolean jaPartiu() {
         return this.horario.after(getCalendar());
+    }
+
+    /**
+     * Verifica se este ônibus partiu depois de outro.
+     *
+     * @param  outroOnibus segundo objeto Ônibus para comparar com este
+     *
+     * @return true se o horário deste ônibus estiver após o horário do outroOnibus
+     */
+    public boolean passouDepoisDe(Onibus outroOnibus) {
+        return this.horario.after(outroOnibus.getHorario());
     }
 
 
