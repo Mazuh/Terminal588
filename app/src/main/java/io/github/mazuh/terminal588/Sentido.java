@@ -102,8 +102,8 @@ public class Sentido {
                         new Onibus(Onibus.STMARIA,   "11:08"),
                         new Onibus(Onibus.REUNIDAS,  "11:16"),
                         new Onibus(Onibus.GUANABARA, "11:30"),
-                        new Onibus(Onibus.GUANABARA, "11:38"),
                         new Onibus(Onibus.CIDNATAL,  "11:35"),
+                        new Onibus(Onibus.GUANABARA, "11:38"),
                         new Onibus(Onibus.STMARIA,   "11:43"),
                         new Onibus(Onibus.REUNIDAS,  "11:51"),
 
@@ -163,8 +163,9 @@ public class Sentido {
                         new Onibus(Onibus.GUANABARA, "19:50"),
 
                         new Onibus(Onibus.STMARIA,   "20:08"),
-                        new Onibus(Onibus.GUANABARA, "20:24"),
                         new Onibus(Onibus.REUNIDAS,  "20:16"),
+                        new Onibus(Onibus.GUANABARA, "20:24"),
+                        new Onibus(Onibus.GUANABARA, "20:50"),
 
                         new Onibus(Onibus.CIDNATAL,  "21:00"),
                         new Onibus(Onibus.STMARIA,   "21:20"),
