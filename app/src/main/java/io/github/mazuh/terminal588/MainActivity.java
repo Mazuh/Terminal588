@@ -95,16 +95,16 @@ public class MainActivity extends AppCompatActivity {
      * Reúne as funções extras que devem ser executadas on create.
      */
     private void init(){
-        Log.d("MAZUH", "0");
+        Log.d("MAZUH", "1");
 
         initAccordion();
         initTextHorarios();
 
+        // TODO atualização do sentido (por métodos private, não modificar instâncias) X em X segs
         direto = new Sentido(Sentido.DIRETO);
-        atualizarDireto(); // TODO atualização de X em X segundos
-
-        //inverso = new Sentido(Sentido.INVERSO);
-
+        atualizarDireto();
+        inverso = new Sentido(Sentido.INVERSO);
+        atualizarInverso();
     }
 
     /**
@@ -145,11 +145,11 @@ public class MainActivity extends AppCompatActivity {
         Onibus anterior = onibus[0];
         Onibus proximo  = onibus[1];
 
-        tvDiretoAnteriorHorario.setText(anterior == null ? "Ish..." : anterior.getHorarioStr());
-        tvDiretoAnteriorEmpresa.setText(anterior == null ? "Nenhum até agora." : anterior.getEmpresa());
+        tvInversoAnteriorHorario.setText(anterior == null ? "Ish..." : anterior.getHorarioStr());
+        tvInversoAnteriorEmpresa.setText(anterior == null ? "Nenhum até agora." : anterior.getEmpresa());
 
-        tvDiretoProximoHorario.setText(proximo == null ? "Caramba..." : proximo.getHorarioStr());
-        tvDiretoProximoEmpresa.setText(proximo == null ? "O último já partiu!" : proximo.getEmpresa());
+        tvInversoProximoHorario.setText(proximo == null ? "Caramba..." : proximo.getHorarioStr());
+        tvInversoProximoEmpresa.setText(proximo == null ? "O último já partiu!" : proximo.getEmpresa());
     }
 
     /**

@@ -181,65 +181,78 @@ public class Sentido {
 
             case Sentido.INVERSO:
                 onibus = new Onibus[]{
-                        // TODO: manualmente ordenar crescentemente por parâmetro de horário
-                        // # 3
                         new Onibus(Onibus.GUANABARA, "06:20"),
-                        new Onibus(Onibus.GUANABARA, "06:55"),
-                        new Onibus(Onibus.GUANABARA, "07:30"),
-                        new Onibus(Onibus.GUANABARA, "08:18"),
-                        new Onibus(Onibus.GUANABARA, "09:55"),
-                        new Onibus(Onibus.GUANABARA, "10:30"),
-                        new Onibus(Onibus.GUANABARA, "11:12"),
-                        new Onibus(Onibus.GUANABARA, "11:47"),
-                        new Onibus(Onibus.GUANABARA, "12:25"),
-                        new Onibus(Onibus.GUANABARA, "13:12"),
-                        new Onibus(Onibus.GUANABARA, "14:08"),
-                        new Onibus(Onibus.GUANABARA, "15:04"),
-                        new Onibus(Onibus.GUANABARA, "16:00"),
-                        new Onibus(Onibus.GUANABARA, "16:36"),
-                        new Onibus(Onibus.GUANABARA, "17:15"),
-                        new Onibus(Onibus.GUANABARA, "19:14"),
-                        new Onibus(Onibus.GUANABARA, "20:00"),
-                        new Onibus(Onibus.GUANABARA, "21:20"),
-                        // # 6
                         new Onibus(Onibus.CONCEICAO, "06:42"),
+                        new Onibus(Onibus.VIASUL,    "06:50"),
+                        new Onibus(Onibus.GUANABARA, "06:55"),
+
                         new Onibus(Onibus.CONCEICAO, "07:14"),
+                        new Onibus(Onibus.VIASUL,    "07:26"),
+                        new Onibus(Onibus.GUANABARA, "07:30"),
                         new Onibus(Onibus.CONCEICAO, "07:52"),
+
+                        new Onibus(Onibus.VIASUL,    "08:09"),
+                        new Onibus(Onibus.GUANABARA, "08:18"),
+
+                        new Onibus(Onibus.VIASUL,    "09:05"),
                         new Onibus(Onibus.CONCEICAO, "09:25"),
+                        new Onibus(Onibus.GUANABARA, "09:55"),
+
                         new Onibus(Onibus.CONCEICAO, "10:10"),
+                        new Onibus(Onibus.GUANABARA, "10:30"),
                         new Onibus(Onibus.CONCEICAO, "10:45"),
+                        new Onibus(Onibus.VIASUL,    "10:50"),
+
+                        new Onibus(Onibus.GUANABARA, "11:12"),
                         new Onibus(Onibus.CONCEICAO, "11:20"),
+                        new Onibus(Onibus.VIASUL,    "11:25"),
+                        new Onibus(Onibus.GUANABARA, "11:47"),
                         new Onibus(Onibus.CONCEICAO, "11:55"),
+
+                        new Onibus(Onibus.VIASUL,    "12:00"),
+                        new Onibus(Onibus.GUANABARA, "12:25"),
                         new Onibus(Onibus.CONCEICAO, "12:35"),
+                        new Onibus(Onibus.VIASUL,    "12:40"),
+
+                        new Onibus(Onibus.GUANABARA, "13:12"),
                         new Onibus(Onibus.CONCEICAO, "13:26"),
+                        new Onibus(Onibus.VIASUL,    "13:33"),
+
+                        new Onibus(Onibus.GUANABARA, "14:08"),
                         new Onibus(Onibus.CONCEICAO, "14:22"),
+                        new Onibus(Onibus.VIASUL,    "14:29"),
+
+                        new Onibus(Onibus.GUANABARA, "15:04"),
                         new Onibus(Onibus.CONCEICAO, "15:18"),
+
+                        new Onibus(Onibus.GUANABARA, "16:00"),
                         new Onibus(Onibus.CONCEICAO, "16:12"),
+                        new Onibus(Onibus.VIASUL,    "16:18"),
+                        new Onibus(Onibus.VIASUL,    "15:25"),
+                        new Onibus(Onibus.GUANABARA, "16:36"),
                         new Onibus(Onibus.CONCEICAO, "16:48"),
+                        new Onibus(Onibus.VIASUL,    "16:53"),
+
+
+                        new Onibus(Onibus.GUANABARA, "17:15"),
                         new Onibus(Onibus.CONCEICAO, "17:25"),
+                        new Onibus(Onibus.VIASUL,    "17:35"),
+
                         new Onibus(Onibus.CONCEICAO, "18:00"),
+                        new Onibus(Onibus.VIASUL,    "18:14"),
+                        new Onibus(Onibus.VIASUL,    "18:50"),
+
+                        new Onibus(Onibus.GUANABARA, "19:14"),
                         new Onibus(Onibus.CONCEICAO, "19:40"),
+
+                        new Onibus(Onibus.GUANABARA, "20:00"),
                         new Onibus(Onibus.CONCEICAO, "20:32"),
-                        // # 7
-                        new Onibus(Onibus.VIASUL, "06:50"),
-                        new Onibus(Onibus.VIASUL, "07:26"),
-                        new Onibus(Onibus.VIASUL, "08:09"),
-                        new Onibus(Onibus.VIASUL, "09:05"),
-                        new Onibus(Onibus.VIASUL, "10:50"),
-                        new Onibus(Onibus.VIASUL, "11:25"),
-                        new Onibus(Onibus.VIASUL, "12:00"),
-                        new Onibus(Onibus.VIASUL, "12:40"),
-                        new Onibus(Onibus.VIASUL, "13:33"),
-                        new Onibus(Onibus.VIASUL, "14:29"),
-                        new Onibus(Onibus.VIASUL, "15:25"),
-                        new Onibus(Onibus.VIASUL, "16:18"),
-                        new Onibus(Onibus.VIASUL, "16:53"),
-                        new Onibus(Onibus.VIASUL, "17:35"),
-                        new Onibus(Onibus.VIASUL, "18:14"),
-                        new Onibus(Onibus.VIASUL, "18:50"),
-                        new Onibus(Onibus.VIASUL, "20:40"),
-                        new Onibus(Onibus.VIASUL, "21:50"),
-                        new Onibus(Onibus.VIASUL, "22:30"),
+                        new Onibus(Onibus.VIASUL,    "20:40"),
+
+                        new Onibus(Onibus.GUANABARA, "21:20"),
+                        new Onibus(Onibus.VIASUL,    "21:50"),
+
+                        new Onibus(Onibus.VIASUL,    "22:30"),
                 };
                 break;
         }
