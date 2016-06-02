@@ -1,9 +1,8 @@
 package io.github.mazuh.terminal588;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -54,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /*
+        // Ver: http://www.mkyong.com/android/how-to-send-email-in-android/
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
 
         init();
     }
@@ -78,14 +81,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.action_cronograma_direto:
+            case R.id.action_cronograma_inverso:
+                Intent intent = new Intent(this, CronogramaActivity.class);
+
+                Sentido sentido = (id == R.id.action_cronograma_direto) ? direto : inverso;
+                intent.putExtra("sentido", sentido.getOnibusQuePartem());
+
+                startActivity(intent);
+                return true;
+
+            case R.id.action_sobre:
+                Log.d("Mazuh", "mazuh@ufrn.edu.br");
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

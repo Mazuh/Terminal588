@@ -1,7 +1,5 @@
 package io.github.mazuh.terminal588;
 
-import android.util.Log;
-
 /**
  * @author mazuh
  */
@@ -24,7 +22,7 @@ public class Sentido {
     public Sentido(short sentido) {
         this.cod = sentido;
 
-        this.onibusQuePartem = getOnibusQuePartem(); // init
+        this.onibusQuePartem = genOnibusQuePartem(); // init
     }
 
 
@@ -58,7 +56,7 @@ public class Sentido {
      * @return um vetor com os objetos de Onibus que partem neste sentido; vetor vazio caso o
      *         construtor de Sentido tenha sido inicializado com parâmetro errado.
      **/
-    private Onibus[] getOnibusQuePartem(){
+    private Onibus[] genOnibusQuePartem(){
         Onibus[] onibus = new Onibus[]{};
 
         switch (this.cod){
@@ -267,5 +265,8 @@ public class Sentido {
 
     public short get() {
         return cod;
+    }
+    public Onibus[] getOnibusQuePartem() {
+        return onibusQuePartem;
     }
 }
