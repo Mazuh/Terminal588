@@ -115,10 +115,10 @@ public class MainActivity extends AppCompatActivity {
         tvDiretoProximoEmpresa   = (TextView) findViewById(R.id.direto_proximo_empresa);
         tvDiretoAnteriorHorario  = (TextView) findViewById(R.id.direto_anterior_horario);
         tvDiretoAnteriorEmpresa  = (TextView) findViewById(R.id.direto_anterior_empresa);
-        /*tvInversoProximoHorario  = (TextView) findViewById(R.id.direto_proximo_horario);
-        tvInversoProximoEmpresa  = (TextView) findViewById(R.id.direto_proximo_horario);
-        tvInversoAnteriorHorario = (TextView) findViewById(R.id.direto_proximo_horario);
-        tvInversoAnteriorEmpresa = (TextView) findViewById(R.id.direto_proximo_horario);*/
+        tvInversoProximoHorario  = (TextView) findViewById(R.id.inverso_proximo_horario);
+        tvInversoProximoEmpresa  = (TextView) findViewById(R.id.inverso_proximo_empresa);
+        tvInversoAnteriorHorario = (TextView) findViewById(R.id.inverso_anterior_horario);
+        tvInversoAnteriorEmpresa = (TextView) findViewById(R.id.inverso_anterior_empresa);
     }
 
     /**
