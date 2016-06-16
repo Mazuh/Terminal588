@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_sobre:
-                Log.d("Mazuh", "mazuh@ufrn.edu.br");
+                startActivity(new Intent(this, SobreActivity.class));
                 return true;
         }
 
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
      * Reúne as funções extras que devem ser executadas on create.
      */
     private void init(){
-        Log.d("MAZUH", "3");
+        Log.d("MAZUH", "0");
 
         initAccordion();
         initTextHorarios();

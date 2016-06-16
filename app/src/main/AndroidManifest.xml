@@ -21,7 +21,8 @@
         <activity
             android:name=".CronogramaActivity"
             android:label="@string/title_activity_cronograma"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SobreActivity"></activity>
     </application>
 
 </manifest>
