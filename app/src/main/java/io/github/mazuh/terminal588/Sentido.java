@@ -1,9 +1,11 @@
 package io.github.mazuh.terminal588;
 
+import java.io.Serializable;
+
 /**
  * @author mazuh
  */
-public class Sentido {
+public class Sentido implements Serializable{
 
     /* Dados do veículos deste sentido */
     private short cod;
@@ -258,12 +260,31 @@ public class Sentido {
         return onibus;
     }
 
+    /**
+     * Gera uma string correspondente ao nome do sentido (baseado no código de argumento
+     * do construtor).
+     *
+     * @return nome da sentido;
+     *         ou "?" caso o parâmetro cod no construtor seja inválido (usar constantes próprias!)
+     */
+    public String getNome(){
+        switch(this.cod){
+            case DIRETO:
+                return "Direto";
+
+            case INVERSO:
+                return "Inverso";
+
+            default:
+                return "?";
+        }
+    }
 
 
 
     /* ACESSOS PADRÃO */
 
-    public short get() {
+    public short getCod() {
         return cod;
     }
     public Onibus[] getOnibusQuePartem() {

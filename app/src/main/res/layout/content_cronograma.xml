@@ -11,25 +11,30 @@
     tools:showIn="@layout/activity_cronograma">
 
     <TextView
+        android:id="@+id/cronograma_titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#000"
         android:padding="16dp"
-        android:text="Cronograma: "
+        android:text="Cronograma"
         android:textColor="#fff"
         android:textSize="30dp" />
 
+
+    <TextView
+        android:id="@+id/cronograma_aviso"
+        android:text="(Apenas para os dias úteis/letivos)"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/cronograma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="20dp"></ListView>
 
-    <TextView
-        android:text="Válidos apenas para os dias úteis. Fins de semana e feriados são instáveis demais (dica: o mais comum é só rodarem até 12:00)"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

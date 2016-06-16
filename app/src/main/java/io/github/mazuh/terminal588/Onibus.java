@@ -2,13 +2,14 @@ package io.github.mazuh.terminal588;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.TimeZone;
 
 /**
  * @author mazuh
  */
-public class Onibus {
+public class Onibus implements Serializable {
 
     /* Dados do veículo */
     private Calendar horario;
@@ -47,11 +48,7 @@ public class Onibus {
      */
     @Override
     public String toString() {
-        return this.horario.get(Calendar.HOUR_OF_DAY)
-                + ":"
-                + this.horario.get(Calendar.MINUTE)
-                + " - "
-                + this.empresa;
+        return getHorarioStr() + " - " + this.empresa;
     }
 
 

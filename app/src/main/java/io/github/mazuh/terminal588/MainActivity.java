@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, CronogramaActivity.class);
 
                 Sentido sentido = (id == R.id.action_cronograma_direto) ? direto : inverso;
-                intent.putExtra("sentido", sentido.getOnibusQuePartem());
+                intent.putExtra("sentido", sentido);
 
                 startActivity(intent);
                 return true;
