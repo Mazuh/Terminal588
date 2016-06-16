@@ -73,6 +73,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        atualizarDireto();
+        atualizarInverso();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -106,16 +114,13 @@ public class MainActivity extends AppCompatActivity {
      * Reúne as funções extras que devem ser executadas on create.
      */
     private void init(){
-        Log.d("MAZUH", "1");
+        Log.d("MAZUH", "3");
 
         initAccordion();
         initTextHorarios();
 
-        // TODO atualização do sentido (por métodos private, não modificar instâncias) X em X segs
         direto = new Sentido(Sentido.DIRETO);
-        atualizarDireto();
         inverso = new Sentido(Sentido.INVERSO);
-        atualizarInverso();
     }
 
     /**
