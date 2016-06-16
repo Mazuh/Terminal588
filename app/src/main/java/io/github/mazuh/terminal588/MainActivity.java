@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
      * Reúne as funções extras que devem ser executadas on create.
      */
     private void init(){
-        Log.d("MAZUH", "0");
+        //Log.d("MAZUH", "0");
 
         initAccordion();
         initTextHorarios();
