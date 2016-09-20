@@ -5,11 +5,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 
@@ -24,25 +23,26 @@ public class MainActivity extends AppCompatActivity {
     /* MAPEAMENTO DO LAYOUT */
 
     // accordion: elementos
-    private TextView accordionBtnDiretoProximo;
-    private TextView accordionBtnDiretoAnterior;
-    private TextView accordionBtnInversoProximo;
-    private TextView accordionBtnInversoAnterior;
-    private LinearLayout accordionContainerDiretoProximo;
-    private LinearLayout accordionContainerDiretoAnterior;
-    private LinearLayout accordionContainerInversoProximo;
-    private LinearLayout accordionContainerInversoAnterior;
+    private TextView accordionBtnDireto;
+    private TextView accordionBtnInverso;
+    private TableLayout accordionContainerDireto;
+    private TableLayout accordionContainerInverso;
     // accordions: atributos
     private static final int VISIBILITY_ON  = View.VISIBLE;
     private static final int VISIBILITY_OFF = View.GONE;
     private static Drawable ICON_ON, ICON_OFF; // initAccordion()
     private static Drawable BACKGROUND_ON, BACKGROUND_OFF; // initAccordion()
 
-    // textview de horários
+    // textviews de horários do Direto
+    private TextView tvDiretoProximo2Horario;
+    private TextView tvDiretoProximo2Empresa;
     private TextView tvDiretoProximoHorario;
     private TextView tvDiretoProximoEmpresa;
     private TextView tvDiretoAnteriorHorario;
     private TextView tvDiretoAnteriorEmpresa;
+    // textviews de horários do Inverso
+    private TextView tvInversoProximo2Horario;
+    private TextView tvInversoProximo2Empresa;
     private TextView tvInversoProximoHorario;
     private TextView tvInversoProximoEmpresa;
     private TextView tvInversoAnteriorHorario;
@@ -129,10 +129,15 @@ public class MainActivity extends AppCompatActivity {
     private void initTextHorarios(){
         tvDiretoProximoHorario   = (TextView) findViewById(R.id.direto_proximo_horario);
         tvDiretoProximoEmpresa   = (TextView) findViewById(R.id.direto_proximo_empresa);
+        tvDiretoProximo2Horario  = (TextView) findViewById(R.id.direto_proximo2_horario);
+        tvDiretoProximo2Empresa  = (TextView) findViewById(R.id.direto_proximo2_empresa);
         tvDiretoAnteriorHorario  = (TextView) findViewById(R.id.direto_anterior_horario);
         tvDiretoAnteriorEmpresa  = (TextView) findViewById(R.id.direto_anterior_empresa);
+
         tvInversoProximoHorario  = (TextView) findViewById(R.id.inverso_proximo_horario);
         tvInversoProximoEmpresa  = (TextView) findViewById(R.id.inverso_proximo_empresa);
+        tvInversoProximo2Horario = (TextView) findViewById(R.id.inverso_proximo2_horario);
+        tvInversoProximo2Empresa = (TextView) findViewById(R.id.inverso_proximo2_empresa);
         tvInversoAnteriorHorario = (TextView) findViewById(R.id.inverso_anterior_horario);
         tvInversoAnteriorEmpresa = (TextView) findViewById(R.id.inverso_anterior_empresa);
     }
@@ -141,15 +146,20 @@ public class MainActivity extends AppCompatActivity {
      * Atualiza os textos do sentido direto com novas previsões
      */
     private void atualizarDireto(){
-        Onibus[] onibus = direto.findOnibusAnteriorEProximo();
-        Onibus anterior = onibus[0];
-        Onibus proximo  = onibus[1];
+        Onibus[] onibus = direto.findOnibusAnteriorEProximos();
+        Onibus anterior = onibus[0],
+                proximo  = onibus[1],
+                proximo2 = onibus[2];
 
-        tvDiretoAnteriorHorario.setText(anterior == null ? "Ops..." : anterior.getHorarioStr());
-        tvDiretoAnteriorEmpresa.setText(anterior == null ? "Nenhum partiu hoje." : anterior.getEmpresa());
+        tvDiretoAnteriorHorario.setText(anterior == null ? "Bom dia..." : anterior.getHorarioStr());
+        tvDiretoAnteriorEmpresa.setText(anterior == null ? "Ainda nenhum partiu hoje." : anterior.getEmpresa());
 
-        tvDiretoProximoHorario.setText(proximo == null ? "Esconde o celular" : proximo.getHorarioStr());
-        tvDiretoProximoEmpresa.setText(proximo == null ? "e estica as pernas." : proximo.getEmpresa());
+        tvDiretoProximoHorario.setText(proximo == null ? "zZZz" : proximo.getHorarioStr());
+        tvDiretoProximoEmpresa.setText(proximo == null ? "zZZz" : proximo.getEmpresa());
+
+        tvDiretoProximo2Horario.setText(proximo2 == null ? "Eita!" : proximo2.getHorarioStr());
+        tvDiretoProximo2Empresa.setText(proximo2 == null ? "Esconde esse celular e sebo nas canelas!" : proximo2.getEmpresa());
+
     }
 
 
@@ -157,144 +167,87 @@ public class MainActivity extends AppCompatActivity {
      * Atualiza os textos do sentido inverso com novas previsões
      */
     private void atualizarInverso(){
-        Onibus[] onibus = inverso.findOnibusAnteriorEProximo();
-        Onibus anterior = onibus[0];
-        Onibus proximo  = onibus[1];
+        Onibus[] onibus = inverso.findOnibusAnteriorEProximos();
+        Onibus anterior = onibus[0],
+                proximo  = onibus[1],
+                proximo2 = onibus[2];
 
-        tvInversoAnteriorHorario.setText(anterior == null ? "Ish..." : anterior.getHorarioStr());
-        tvInversoAnteriorEmpresa.setText(anterior == null ? "Nenhum até agora." : anterior.getEmpresa());
+        tvInversoAnteriorHorario.setText(anterior == null ? "Bom dia..." : anterior.getHorarioStr());
+        tvInversoAnteriorEmpresa.setText(anterior == null ? "Nenhum saiu ainda." : anterior.getEmpresa());
 
-        tvInversoProximoHorario.setText(proximo == null ? "Caramba..." : proximo.getHorarioStr());
-        tvInversoProximoEmpresa.setText(proximo == null ? "O último já partiu!" : proximo.getEmpresa());
+        tvInversoProximoHorario.setText(proximo == null ? "zZZz" : proximo.getHorarioStr());
+        tvInversoProximoEmpresa.setText(proximo == null ? "zZZZ" : proximo.getEmpresa());
+
+        tvInversoProximo2Horario.setText(proximo2 == null ? "Boa noite..." : proximo2.getHorarioStr());
+        tvInversoProximo2Empresa.setText(proximo2 == null ? "Fim das previsões!" : proximo2.getEmpresa());
+
     }
 
     /**
      * Mapeia e configura objetos do layout relacionados ao accordion
      */
     private void initAccordion(){
-        accordionBtnDiretoProximo   = (TextView) findViewById(R.id.accordion_btn_direto_proximo);
-        accordionBtnDiretoAnterior  = (TextView) findViewById(R.id.accordion_btn_direto_anterior);
-        accordionBtnInversoProximo  = (TextView) findViewById(R.id.accordion_btn_inverso_proximo);
-        accordionBtnInversoAnterior = (TextView) findViewById(R.id.accordion_btn_inverso_anterior);
+        accordionBtnDireto = (TextView) findViewById(R.id.accordion_btn_direto);
+        accordionBtnInverso = (TextView) findViewById(R.id.accordion_btn_inverso);
 
-        accordionContainerDiretoProximo   = (LinearLayout) findViewById(R.id.accordion_container_direto_proximo);
-        accordionContainerDiretoAnterior  = (LinearLayout) findViewById(R.id.accordion_container_direto_anterior);
-        accordionContainerInversoProximo  = (LinearLayout) findViewById(R.id.accordion_container_inverso_proximo);
-        accordionContainerInversoAnterior = (LinearLayout) findViewById(R.id.accordion_container_inverso_anterior);
+        accordionContainerDireto  = (TableLayout) findViewById(R.id.accordion_container_direto);
+        accordionContainerInverso = (TableLayout) findViewById(R.id.accordion_container_inverso);
 
-        BACKGROUND_ON  = accordionBtnDiretoProximo.getBackground();
-        BACKGROUND_OFF = accordionBtnDiretoAnterior.getBackground();
-        ICON_ON        = accordionBtnDiretoProximo.getCompoundDrawables()[0];
-        ICON_OFF       = accordionBtnDiretoAnterior.getCompoundDrawables()[0];
+        BACKGROUND_ON  = accordionBtnDireto.getBackground();
+        BACKGROUND_OFF = accordionBtnInverso.getBackground();
+        ICON_ON        = accordionBtnDireto.getCompoundDrawables()[0];
+        ICON_OFF       = accordionBtnInverso.getCompoundDrawables()[0];
 
-        /*if (Build.VERSION.SDK_INT > 21) {
-            ICON_ON = getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black_24dp, getTheme());
-            ICON_OFF = getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black_24dp, getTheme());
-        } else{
-            // getDrawable(int) decrecated da api lv 22 em diante
-            ICON_ON = getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black_24dp);
-            ICON_OFF = getResources().getDrawable(R.drawable.ic_keyboard_arrow_right_black_24dp);
-        }*/
-
-        accordionBtnDiretoProximo.setOnClickListener(new View.OnClickListener() {
+        accordionBtnDireto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                accordionDiretoProximo(true);
-                accordionDiretoAnterior(false);
+                accordionDireto(true);
+                accordionInverso(false);
             }
         });
 
-        accordionBtnDiretoAnterior.setOnClickListener(new View.OnClickListener() {
+        accordionBtnInverso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                accordionDiretoProximo(false);
-                accordionDiretoAnterior(true);
+                accordionDireto(false);
+                accordionInverso(true);
             }
         });
 
-        accordionBtnInversoProximo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                accordionInversoProximo(true);
-                accordionInversoAnterior(false);
-            }
-        });
-
-        accordionBtnInversoAnterior.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                accordionInversoProximo(false);
-                accordionInversoAnterior(true);
-            }
-        });
     }
 
 
     /**
-     * Alterna estado da aba accordion: próximo ônibus do sentido
+     * Alterna estado da aba accordion: direto
      *
      * @param ativar true se o estado deve ser para visível, ligado etc
      */
-    private void accordionDiretoProximo(boolean ativar){
+    private void accordionDireto(boolean ativar){
         if(ativar){
-            accordionContainerDiretoProximo.setVisibility(VISIBILITY_ON);
-            accordionBtnDiretoProximo.setBackground(BACKGROUND_ON);
-            accordionBtnDiretoProximo.setCompoundDrawables(ICON_ON, null, null, null);
+            accordionContainerDireto.setVisibility(VISIBILITY_ON);
+            accordionBtnDireto.setBackground(BACKGROUND_ON);
+            accordionBtnDireto.setCompoundDrawables(ICON_ON, null, null, null);
         } else{
-            accordionContainerDiretoProximo.setVisibility(VISIBILITY_OFF);
-            accordionBtnDiretoProximo.setBackground(BACKGROUND_OFF);
-            accordionBtnDiretoProximo.setCompoundDrawables(ICON_OFF, null, null, null);
+            accordionContainerDireto.setVisibility(VISIBILITY_OFF);
+            accordionBtnDireto.setBackground(BACKGROUND_OFF);
+            accordionBtnDireto.setCompoundDrawables(ICON_OFF, null, null, null);
         }
     }
 
     /**
-     * Alterna estado da aba accordion: ônibus anterior do sentido direto
+     * Alterna estado da aba accordion: inverso
      *
      * @param ativar true se o estado deve ser para visível, ligado etc
      */
-    private void accordionDiretoAnterior(boolean ativar){
+    private void accordionInverso(boolean ativar){
         if(ativar){
-            accordionContainerDiretoAnterior.setVisibility(VISIBILITY_ON);
-            accordionBtnDiretoAnterior.setBackground(BACKGROUND_ON);
-            accordionBtnDiretoAnterior.setCompoundDrawables(ICON_ON, null, null, null);
+            accordionContainerInverso.setVisibility(VISIBILITY_ON);
+            accordionBtnInverso.setBackground(BACKGROUND_ON);
+            accordionBtnInverso.setCompoundDrawables(ICON_ON, null, null, null);
         } else{
-            accordionContainerDiretoAnterior.setVisibility(VISIBILITY_OFF);
-            accordionBtnDiretoAnterior.setBackground(BACKGROUND_OFF);
-            accordionBtnDiretoAnterior.setCompoundDrawables(ICON_OFF, null, null, null);
-        }
-    }
-
-    /**
-     * Alterna estado da aba accordion: próximo ônibus do sentido inverso
-     *
-     * @param ativar true se o estado deve ser para visível, ligado etc
-     */
-    private void accordionInversoProximo(boolean ativar){
-        if(ativar){
-            accordionContainerInversoProximo.setVisibility(VISIBILITY_ON);
-            accordionBtnInversoProximo.setBackground(BACKGROUND_ON);
-            accordionBtnInversoProximo.setCompoundDrawables(ICON_ON, null, null, null);
-        } else{
-            accordionContainerInversoProximo.setVisibility(VISIBILITY_OFF);
-            accordionBtnInversoProximo.setBackground(BACKGROUND_OFF);
-            accordionBtnInversoProximo.setCompoundDrawables(ICON_OFF, null, null, null);
-        }
-    }
-
-    /**
-     * Alterna estado da aba accordion: ônibus anterior do sentido inverso
-     *
-     * @param ativar true se o estado deve ser para visível, ligado etc
-     */
-    private void accordionInversoAnterior(boolean ativar){
-        if(ativar){
-            accordionContainerInversoAnterior.setVisibility(VISIBILITY_ON);
-            accordionBtnInversoAnterior.setBackground(BACKGROUND_ON);
-            accordionBtnInversoAnterior.setCompoundDrawables(ICON_ON, null, null, null);
-        } else{
-            accordionContainerInversoAnterior.setVisibility(VISIBILITY_OFF);
-            accordionBtnInversoAnterior.setBackground(BACKGROUND_OFF);
-            accordionBtnInversoAnterior.setCompoundDrawables(ICON_OFF, null, null, null);
+            accordionContainerInverso.setVisibility(VISIBILITY_OFF);
+            accordionBtnInverso.setBackground(BACKGROUND_OFF);
+            accordionBtnInverso.setCompoundDrawables(ICON_OFF, null, null, null);
         }
     }
 

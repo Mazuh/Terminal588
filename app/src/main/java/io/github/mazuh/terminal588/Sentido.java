@@ -35,20 +35,29 @@ public class Sentido implements Serializable{
      *         0 = último que já partiu (null se nenhum partiu ainda),
      *         1 = próximo a partir (null se não houver um próximo nesta data)
      **/
-    public Onibus[] findOnibusAnteriorEProximo(){
-        Onibus proximo  = null;
-        Onibus anterior = null;
+    public Onibus[] findOnibusAnteriorEProximos(){
+        Onibus proximo2 = null,
+               proximo  = null,
+               anterior = null;
 
+        boolean soFaltaEncontrarProximo2 = false;
         for (Onibus onibus : this.onibusQuePartem) {
-            if (!onibus.jaPartiu()){
-                proximo = onibus;
-                break;
+            if (!soFaltaEncontrarProximo2){
+
+                if (!onibus.jaPartiu()){
+                    proximo = onibus;
+                    soFaltaEncontrarProximo2 = true;
+                } else{
+                    anterior = onibus;
+                }
+
             } else{
-                anterior = onibus;
+                proximo2 = onibus;
+                break;
             }
         }
 
-        return new Onibus[] {anterior, proximo};
+        return new Onibus[] {anterior, proximo, proximo2};
     }
 
 

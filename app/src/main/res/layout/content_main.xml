@@ -28,8 +28,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- DIRETO ////////////////////////////////////////////// -->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,85 +37,36 @@
                 android:paddingTop="20dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:drawableLeft="@drawable/ic_directions_bus_black_24dp"
-                    android:text="DIRETO"
-                    android:textSize="25dp"
+                    android:drawableTop="@drawable/ic_directions_bus_black_24dp"
                     android:textStyle="bold" />
 
-                <!-- próximo -->
+                <!-- Início do accordion -->
+
+                <!-- DIRETO /////////////////////////// -->
+
                 <TextView
-                    android:id="@+id/accordion_btn_direto_proximo"
+                    android:id="@+id/accordion_btn_direto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#2c3e50"
                     android:drawableLeft="@drawable/ic_keyboard_arrow_down_black_24dp"
                     android:drawableTint="#fff"
                     android:padding="5dp"
-                    android:text="Próximo"
+                    android:text="DIRETO"
                     android:textColor="#fff"
                     android:textSize="23dp" />
 
-                <LinearLayout
-                    android:id="@+id/accordion_container_direto_proximo"
+                <TableLayout
+                    android:id="@+id/accordion_container_direto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#bdc3c7"
-                    android:orientation="vertical">
+                    android:stretchColumns="1"
+                    android:shrinkColumns="1">
 
-                    <TableRow
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="10dp">
-
-                        <TextView
-                            android:id="@+id/direto_proximo_horario"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="40dp"
-                            android:paddingRight="2dp"
-                            android:text="00:00"
-                            android:textSize="25dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/direto_proximo_empresa"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="2dp"
-                            android:paddingRight="40dp"
-                            android:text="Empresa"
-                            android:textSize="25dp" />
-
-                    </TableRow>
-                </LinearLayout>
-
-                <!-- anterior -->
-
-                <TextView
-                    android:id="@+id/accordion_btn_direto_anterior"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#95a5a6"
-                    android:drawableLeft="@drawable/ic_keyboard_arrow_right_black_24dp"
-                    android:drawableTint="#fff"
-                    android:padding="5dp"
-                    android:text="Anterior"
-                    android:textColor="#fff"
-                    android:textSize="23dp" />
-
-                <LinearLayout
-                    android:id="@+id/accordion_container_direto_anterior"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#bdc3c7"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
+                    <!-- Direto 1 (o anterior) -->
                     <TableRow
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -145,49 +94,8 @@
                             android:textSize="25dp" />
 
                     </TableRow>
-                </LinearLayout>
 
-            </LinearLayout>
-
-            <!-- INVERSO ////////////////////////////////////////////// -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="30dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:drawableLeft="@drawable/ic_directions_bus_black_24dp"
-                    android:text="INVERSO"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <!-- próximo -->
-                <TextView
-                    android:id="@+id/accordion_btn_inverso_proximo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#2c3e50"
-                    android:drawableLeft="@drawable/ic_keyboard_arrow_down_black_24dp"
-                    android:drawableTint="#fff"
-                    android:padding="5dp"
-                    android:text="Próximo"
-                    android:textColor="#fff"
-                    android:textSize="23dp" />
-
-                <LinearLayout
-                    android:id="@+id/accordion_container_inverso_proximo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#bdc3c7"
-                    android:orientation="vertical">
-
+                    <!-- Direto 2 (o próximo) -->
                     <TableRow
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -196,7 +104,7 @@
                         android:paddingTop="10dp">
 
                         <TextView
-                            android:id="@+id/inverso_proximo_horario"
+                            android:id="@+id/direto_proximo_horario"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="40dp"
@@ -206,7 +114,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/inverso_proximo_empresa"
+                            android:id="@+id/direto_proximo_empresa"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="2dp"
@@ -215,30 +123,62 @@
                             android:textSize="25dp" />
 
                     </TableRow>
-                </LinearLayout>
 
-                <!-- anterior -->
+                    <!-- Direto 3 (o que vem depois) -->
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <TextView
+                            android:id="@+id/direto_proximo2_horario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="40dp"
+                            android:paddingRight="2dp"
+                            android:text="00:00"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/direto_proximo2_empresa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="40dp"
+                            android:text="Empresa"
+                            android:textSize="25dp" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <!-- INVERSO /////////////////////////// -->
 
                 <TextView
-                    android:id="@+id/accordion_btn_inverso_anterior"
+                    android:id="@+id/accordion_btn_inverso"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#95a5a6"
                     android:drawableLeft="@drawable/ic_keyboard_arrow_right_black_24dp"
                     android:drawableTint="#fff"
                     android:padding="5dp"
-                    android:text="Anterior"
+                    android:text="INVERSO"
                     android:textColor="#fff"
                     android:textSize="23dp" />
 
-                <LinearLayout
-                    android:id="@+id/accordion_container_inverso_anterior"
+                <TableLayout
+                    android:id="@+id/accordion_container_inverso"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#bdc3c7"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    android:stretchColumns="1"
+                    android:shrinkColumns="1">
 
+                    <!-- Inverso 1 (o anterior) -->
                     <TableRow
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -266,11 +206,80 @@
                             android:textSize="25dp" />
 
                     </TableRow>
-                </LinearLayout>
+
+                    <!-- Inverso 2 (o próximo) -->
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <TextView
+                            android:id="@+id/inverso_proximo_horario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="40dp"
+                            android:paddingRight="2dp"
+                            android:text="00:00"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/inverso_proximo_empresa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="40dp"
+                            android:text="Empresa"
+                            android:textSize="25dp" />
+
+                    </TableRow>
+
+                    <!-- Inverso 3 (o que vem depois) -->
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <TextView
+                            android:id="@+id/inverso_proximo2_horario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="40dp"
+                            android:paddingRight="2dp"
+                            android:text="00:00"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/inverso_proximo2_empresa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="40dp"
+                            android:text="Empresa"
+                            android:textSize="25dp" />
+
+                    </TableRow>
+
+                </TableLayout>
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:textStyle="italic"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:text="EM BREVE: previsão em tempo real."/>
+
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>
