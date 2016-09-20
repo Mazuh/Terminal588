@@ -63,7 +63,7 @@ public class Sentido implements Serializable{
 
         switch (this.cod){
             case Sentido.DIRETO:
-                onibus = new Onibus[]{
+                onibus = new Onibus[]{ // 93 partidas
                         new Onibus(Onibus.GUANABARA, "06:00"),
                         new Onibus(Onibus.STMARIA,   "06:10"),
                         new Onibus(Onibus.REUNIDAS,  "06:30"),
@@ -132,7 +132,6 @@ public class Sentido implements Serializable{
                         new Onibus(Onibus.REUNIDAS,  "15:11"),
                         new Onibus(Onibus.GUANABARA, "15:32"),
                         new Onibus(Onibus.CIDNATAL,  "15:39"),
-                        new Onibus(Onibus.GUANABARA, "15:46"),
                         new Onibus(Onibus.STMARIA,   "15:53"),
 
                         new Onibus(Onibus.REUNIDAS,  "16:06"),
@@ -145,7 +144,6 @@ public class Sentido implements Serializable{
                         new Onibus(Onibus.GUANABARA, "17:10"),
                         new Onibus(Onibus.REUNIDAS,  "17:20"),
                         new Onibus(Onibus.STMARIA,   "17:30"),
-                        new Onibus(Onibus.CIDNATAL,  "17:40"),
                         new Onibus(Onibus.GUANABARA, "17:45"),
                         new Onibus(Onibus.GUANABARA, "17:50"),
                         new Onibus(Onibus.REUNIDAS,  "17:55"),
@@ -175,12 +173,11 @@ public class Sentido implements Serializable{
                         new Onibus(Onibus.CIDNATAL,  "22:05"),
                         new Onibus(Onibus.GUANABARA, "22:15"),
                         new Onibus(Onibus.CIDNATAL,  "22:40"),
-                        new Onibus(Onibus.GUANABARA, "22:50"),
                 };
                 break;
 
             case Sentido.INVERSO:
-                onibus = new Onibus[]{
+                onibus = new Onibus[]{ // 55 partidas
                         new Onibus(Onibus.GUANABARA, "06:20"),
                         new Onibus(Onibus.CONCEICAO, "06:42"),
                         new Onibus(Onibus.VIASUL,    "06:50"),
@@ -224,15 +221,14 @@ public class Sentido implements Serializable{
 
                         new Onibus(Onibus.GUANABARA, "15:04"),
                         new Onibus(Onibus.CONCEICAO, "15:18"),
+                        new Onibus(Onibus.VIASUL,    "15:25"),
 
                         new Onibus(Onibus.GUANABARA, "16:00"),
                         new Onibus(Onibus.CONCEICAO, "16:12"),
                         new Onibus(Onibus.VIASUL,    "16:18"),
-                        new Onibus(Onibus.VIASUL,    "15:25"),
+                        new Onibus(Onibus.VIASUL,    "16:33"),
                         new Onibus(Onibus.GUANABARA, "16:36"),
                         new Onibus(Onibus.CONCEICAO, "16:48"),
-                        new Onibus(Onibus.VIASUL,    "16:53"),
-
 
                         new Onibus(Onibus.GUANABARA, "17:15"),
                         new Onibus(Onibus.CONCEICAO, "17:25"),
